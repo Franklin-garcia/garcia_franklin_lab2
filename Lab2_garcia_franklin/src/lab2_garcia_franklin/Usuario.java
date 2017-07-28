@@ -12,15 +12,16 @@ import java.util.ArrayList;
  * @author Franklin Garcia
  */
 public class Usuario {
+
     private String nombre;
     private int edad;
     private String lugar_nacimiento;
     private String username;
     private String password;
-    private ArrayList<Usuario> lista_amigos; 
-    private ArrayList lista_solicitudes;
-    private ArrayList <String>lista_mensajes_enviados;
-    private ArrayList<String>buzón_entrada;
+    private ArrayList<Usuario> lista_amigos;
+    private ArrayList<Solicitud> lista_solicitudes;
+    private ArrayList<String> lista_mensajes_enviados;
+    private ArrayList<String> buzón_entrada;
 
     public Usuario() {
     }
@@ -36,8 +37,6 @@ public class Usuario {
         this.lista_mensajes_enviados = lista_mensajes_enviados;
         this.buzón_entrada = buzón_entrada;
     }
-
- 
 
     public String getNombre() {
         return nombre;
@@ -115,5 +114,5 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "nombre=" + nombre + ", edad=" + edad + ", lugar_nacimiento=" + lugar_nacimiento + ", username=" + username + ", password=" + password + ", lista_amigos=" + lista_amigos + ", lista_solicitudes=" + lista_solicitudes + ", lista_mensajes_enviados=" + lista_mensajes_enviados + ", buz\u00f3n_entrada=" + buzón_entrada + '}';
     }
-    
+
 }
