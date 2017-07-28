@@ -10,36 +10,33 @@ package lab2_garcia_franklin;
  * @author Franklin Garcia
  */
 public class Solicitud {
-    private Usuario emisor;
-    private Usuario recepetor;
+    private int emisor;
+    private int recepetor;
 
     public Solicitud() {
     }
 
-    public Solicitud(Usuario emisor, Usuario recepetor) {
+    public Solicitud(int emisor, int recepetor) {
         this.emisor = emisor;
         this.recepetor = recepetor;
     }
 
-    public Usuario getEmisor() {
+    public int getEmisor() {
         return emisor;
     }
 
-    public void setEmisor(Usuario emisor) {
+    public void setEmisor(int emisor) {
         this.emisor = emisor;
     }
 
-    public Usuario getRecepetor() {
+    public int getRecepetor() {
         return recepetor;
     }
 
-    public void setRecepetor(Usuario recepetor) {
+    public void setRecepetor(int recepetor) {
         this.recepetor = recepetor;
     }
 
-    @Override
-    public String toString() {
-        return recepetor.getNombre();
-    }
+    
    
 }

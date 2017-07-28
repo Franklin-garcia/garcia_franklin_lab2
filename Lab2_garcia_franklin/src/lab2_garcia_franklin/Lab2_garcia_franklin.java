@@ -5,7 +5,11 @@
  */
 package lab2_garcia_franklin;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -109,31 +113,55 @@ public class Lab2_garcia_franklin {
                                     JOptionPane.showMessageDialog(null, e);//
                                     int p = Integer.parseInt(JOptionPane.showInputDialog("Ingrese posicion"));
 
+
+                                    lista_general.get(p).getLista_solicitudes().add(new Solicitud(pos, p));
+
+                                    JOptionPane.showMessageDialog(null, "!Se envio¡");
+                                }
+                                break;
+                                case "2": {//solicitudes
+                                    String sol = "";
+                                    int cont=0;
+                                    for (Object s : lista_general.get(pos).getLista_solicitudes()) {
+                                        int n=((Solicitud)lista_general.get(pos).getLista_solicitudes().get(cont)).getEmisor();
+                                        sol += n+"--"+lista_general.get(n).getNombre()+"\n";
+                                        cont++;
+                                    }
+                                    JOptionPane.showMessageDialog(null, sol);
+                                    int atender = Integer.parseInt(JOptionPane.showInputDialog("Contestar posicion"));
+                                    String aceptar = JOptionPane.showInputDialog("Que desea hacer? \n"
+                                            + "1-Aceptar \n"
+                                            + "2-Rechazar \n");
+                                    if (aceptar.equals("1")) {
+                                        
+                                    } else if (aceptar.equals("2")) {
+                                        lista_general.get(pos).getLista_solicitudes().remove(atender);
+                                        JOptionPane.showMessageDialog(null, "!Hecho¡");
+                                    }
+                                }
+                                break;
+                                case "3": {//enviar mensajes
+                                    String en = "";
+                                    for (Object s : lista_general.get(pos).getLista_amigos()) {
+                                        en += lista_general.get(pos).getLista_amigos().indexOf(s)
+                                                + " " + s;
+                                    }
+                                    JOptionPane.showMessageDialog(null, en);
+                                    int p = Integer.parseInt(JOptionPane.showInputDialog("Posicion de envio"));
                                     Usuario emisor = new Usuario(lista_general.get(pos).getNombre(),
                                             lista_general.get(pos).getEdad(),
                                             lista_general.get(pos).getLugar_nacimiento(),
                                             lista_general.get(pos).getUsername(),
                                             lista_general.get(pos).getPassword());
-                                    Usuario recepetor = new Usuario(lista_general.get(p).getNombre(),
+                                    Usuario receptor = new Usuario(lista_general.get(p).getNombre(),
                                             lista_general.get(p).getEdad(),
                                             lista_general.get(p).getLugar_nacimiento(),
                                             lista_general.get(p).getUsername(),
                                             lista_general.get(p).getPassword());
-
-                                    lista_general.get(p).getLista_solicitudes().add(new Solicitud(emisor,recepetor));
-                                   JOptionPane.showMessageDialog(null, "!Se envio¡");
-                                }
-                                break;
-                                case "2": {//solicitudes
-                                    String sol="";
-                                    for (Object s:lista_general.get(pos).getLista_solicitudes()) {
-                                           sol+=lista_general.get(pos).getLista_solicitudes().indexOf(s)+
-                                                   " "+sol;
-                                    }
-                                    JOptionPane.showMessageDialog(null, sol);
-                                } 
-                                break;
-                                case "3": {//enviar mensajes
+                                    Date fecha = new Date();
+                                    DateFormat df = new SimpleDateFormat("DD/MM/YYYY");
+                                    String t = df.format(fecha);
+                                    String mensaje = JOptionPane.showInputDialog("Mensaje a enviar");
 
                                 }
                                 break;

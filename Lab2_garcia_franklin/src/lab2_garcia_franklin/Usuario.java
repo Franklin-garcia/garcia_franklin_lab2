@@ -18,10 +18,10 @@ public class Usuario {
     private String lugar_nacimiento;
     private String username;
     private String password;
-    private ArrayList<Usuario> lista_amigos;
-    private ArrayList<Solicitud> lista_solicitudes;
-    private ArrayList<String> lista_mensajes_enviados;
-    private ArrayList<String> buzón_entrada;
+    private ArrayList<Integer> lista_amigos=new ArrayList();
+    private ArrayList<Solicitud> lista_solicitudes=new ArrayList();
+    private ArrayList<Mensaje> lista_mensajes_enviados=new ArrayList();
+    private ArrayList<Mensaje> buzón_entrada=new ArrayList();
 
     public Usuario() {
     }
@@ -78,11 +78,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public ArrayList<Usuario> getLista_amigos() {
+    public ArrayList<Integer> getLista_amigos() {
         return lista_amigos;
     }
 
-    public void setLista_amigos(ArrayList<Usuario> lista_amigos) {
+    public void setLista_amigos(ArrayList<Integer> lista_amigos) {
         this.lista_amigos = lista_amigos;
     }
 
@@ -94,19 +94,19 @@ public class Usuario {
         this.lista_solicitudes = lista_solicitudes;
     }
 
-    public ArrayList<String> getLista_mensajes_enviados() {
+    public ArrayList<Mensaje> getLista_mensajes_enviados() {
         return lista_mensajes_enviados;
     }
 
-    public void setLista_mensajes_enviados(ArrayList<String> lista_mensajes_enviados) {
+    public void setLista_mensajes_enviados(ArrayList<Mensaje> lista_mensajes_enviados) {
         this.lista_mensajes_enviados = lista_mensajes_enviados;
     }
 
-    public ArrayList<String> getBuzón_entrada() {
+    public ArrayList<Mensaje> getBuzón_entrada() {
         return buzón_entrada;
     }
 
-    public void setBuzón_entrada(ArrayList<String> buzón_entrada) {
+    public void setBuzón_entrada(ArrayList<Mensaje> buzón_entrada) {
         this.buzón_entrada = buzón_entrada;
     }
 
