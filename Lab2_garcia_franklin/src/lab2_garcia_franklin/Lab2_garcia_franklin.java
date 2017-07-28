@@ -124,27 +124,36 @@ public class Lab2_garcia_franklin {
                                     int cont=0;
                                     for (Object s : lista_general.get(pos).getLista_solicitudes()) {
                                         int n=((Solicitud)lista_general.get(pos).getLista_solicitudes().get(cont)).getEmisor();
-                                        sol += n+"--"+lista_general.get(n).getNombre()+"\n";
-                                        cont++;
+                                        sol +="Posicion de solicitud= "+ lista_general.get(pos).getLista_solicitudes().indexOf(s)+"\n"+"Posicion en la lista general= "+n+"--"+lista_general.get(n).getNombre()+"\n";
+                                        cont++; 
                                     }
-                                    JOptionPane.showMessageDialog(null, sol);
-                                    int atender = Integer.parseInt(JOptionPane.showInputDialog("Contestar posicion"));
+                                    JOptionPane.showMessageDialog(null, "Mis amigos \n"+sol);
+                                    ///No son nuevos objetos son de la lista general solo estan validados para agregar
+                                     //en la lista de solicitudes y amigos asi que pone los numero que aparecen ahi
+                                     
+                                    int atender = Integer.parseInt(JOptionPane.showInputDialog("Contestar posicion en la lista general"));
+                                    int solicitud=Integer.parseInt(JOptionPane.showInputDialog("posicion Solicitud"));
                                     String aceptar = JOptionPane.showInputDialog("Que desea hacer? \n"
                                             + "1-Aceptar \n"
                                             + "2-Rechazar \n");
                                     if (aceptar.equals("1")) {
-                                        
+                                        lista_general.get(pos).getLista_amigos().add(atender);
+                                        lista_general.get(atender).getLista_amigos().add(pos);
+                                        lista_general.get(pos).getLista_solicitudes().remove(solicitud);
+                                        JOptionPane.showMessageDialog(null,"!Hecho¡");
                                     } else if (aceptar.equals("2")) {
-                                        lista_general.get(pos).getLista_solicitudes().remove(atender);
+                                        lista_general.get(pos).getLista_solicitudes().remove(solicitud);
                                         JOptionPane.showMessageDialog(null, "!Hecho¡");
                                     }
                                 }
                                 break;
                                 case "3": {//enviar mensajes
                                     String en = "";
+                                    int con=0;
                                     for (Object s : lista_general.get(pos).getLista_amigos()) {
-                                        en += lista_general.get(pos).getLista_amigos().indexOf(s)
-                                                + " " + s;
+                                        int n=lista_general.get(pos).getLista_amigos().get(con); 
+                                        en+=n+"--"+lista_general.get(n).getNombre()+"\n";
+                                        con++;
                                     }
                                     JOptionPane.showMessageDialog(null, en);
                                     int p = Integer.parseInt(JOptionPane.showInputDialog("Posicion de envio"));
@@ -162,7 +171,9 @@ public class Lab2_garcia_franklin {
                                     DateFormat df = new SimpleDateFormat("DD/MM/YYYY");
                                     String t = df.format(fecha);
                                     String mensaje = JOptionPane.showInputDialog("Mensaje a enviar");
-
+                                    lista_general.get(pos).getLista_mensajes_enviados().add(new Mensaje(pos,p,t,mensaje));
+                                    lista_general.get(p).getBuzón_entrada().add(new Mensaje(pos,p,t,mensaje));
+                                    JOptionPane.showMessageDialog(null, "Enviado");
                                 }
                                 break;
                                 case "4": {//buzon
