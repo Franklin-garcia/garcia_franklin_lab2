@@ -127,11 +127,13 @@ public class Lab2_garcia_franklin {
                                         cont++;
                                     }
                                     JOptionPane.showMessageDialog(null, "Mis amigos \n" + sol);
-                                    ///No son nuevos objetos son de la lista general solo estan validados para agregar
-                                    //en la lista de solicitudes y amigos asi que pone los numero que aparecen ahi
+                                    /*No son nuevos objetos son de la lista general solo estan validados para agregar
+                                    en la lista de solicitudes y amigos pero como posiciones 
+                                    asi que pone los numeros que aparecen ahi sino exception*/
 
                                     int solicitud = Integer.parseInt(JOptionPane.showInputDialog("posicion Solicitud"));
                                     int atender = Integer.parseInt(JOptionPane.showInputDialog("Contestar posicion en la lista general"));
+                                    //Tenes que poner primero el numero de solicitud y despues posicion en la lista general
                                     String aceptar = JOptionPane.showInputDialog("Que desea hacer? \n"
                                             + "1-Aceptar \n"
                                             + "2-Rechazar \n");
@@ -163,6 +165,9 @@ public class Lab2_garcia_franklin {
                                     String mensaje = JOptionPane.showInputDialog("Mensaje a enviar");
                                     lista_general.get(pos).getLista_mensajes_enviados().add(new Mensaje(pos, p, t, mensaje));
                                     lista_general.get(p).getBuzón_entrada().add(new Mensaje(pos, p, t, mensaje));
+                                    /*Igual que en la anterior tenes que poner los numeros que aparecen antes
+                                    sino no va a enviar ninguno o va a dar error
+                                    */
                                     JOptionPane.showMessageDialog(null, "Enviado");
                                 }
                                 break;
