@@ -167,7 +167,7 @@ public class Lab2_garcia_franklin {
                                     lista_general.get(p).getBuzón_entrada().add(new Mensaje(pos, p, t, mensaje));
                                     /*Igual que en la anterior tenes que poner los numeros que aparecen antes
                                     sino no va a enviar ninguno o va a dar error
-                                    */
+                                     */
                                     JOptionPane.showMessageDialog(null, "Enviado");
                                 }
                                 break;
@@ -179,14 +179,24 @@ public class Lab2_garcia_franklin {
                                     if (o.equals("1")) {
                                         String mensajes = "";
                                         for (Mensaje u : lista_general.get(pos).getBuzón_entrada()) {
-                                            mensajes +=lista_general.get(u.getEmisor()).getNombre()
-                                                    +" "+ u;
-                                        } 
+                                            mensajes += lista_general.get(u.getEmisor()).getNombre()
+                                                    + " " + u;
+                                        }
                                         JOptionPane.showMessageDialog(null, mensajes);
                                     } else if (o.equals("2")) {
-
+                                        String mensajes = "";
+                                        for (Mensaje u : lista_general.get(pos).getBuzón_entrada()) {
+                                            mensajes += lista_general.get(u.getEmisor()).getNombre()
+                                                    + " " + u;
+                                        }
+                                        JOptionPane.showMessageDialog(null, mensajes);
                                     } else if (o.equals("3")) {
-
+                                        String mensajes = "";
+                                        for (Mensaje u : lista_general.get(pos).getBuzón_entrada()) {
+                                            mensajes += lista_general.get(u.getEmisor()).getNombre()
+                                                    + " " + u;
+                                        }
+                                        JOptionPane.showMessageDialog(null, mensajes);
                                     }
                                 }
                                 break;
