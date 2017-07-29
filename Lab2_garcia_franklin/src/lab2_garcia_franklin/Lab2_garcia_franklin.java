@@ -113,7 +113,6 @@ public class Lab2_garcia_franklin {
                                     JOptionPane.showMessageDialog(null, e);//
                                     int p = Integer.parseInt(JOptionPane.showInputDialog("Ingrese posicion"));
 
-
                                     lista_general.get(p).getLista_solicitudes().add(new Solicitud(pos, p));
 
                                     JOptionPane.showMessageDialog(null, "!Se envio¡");
@@ -121,18 +120,18 @@ public class Lab2_garcia_franklin {
                                 break;
                                 case "2": {//solicitudes
                                     String sol = "";
-                                    int cont=0;
+                                    int cont = 0;
                                     for (Object s : lista_general.get(pos).getLista_solicitudes()) {
-                                        int n=((Solicitud)lista_general.get(pos).getLista_solicitudes().get(cont)).getEmisor();
-                                        sol +="Posicion de solicitud= "+ lista_general.get(pos).getLista_solicitudes().indexOf(s)+"\n"+"Posicion en la lista general= "+n+"--"+lista_general.get(n).getNombre()+"\n";
-                                        cont++; 
+                                        int n = ((Solicitud) lista_general.get(pos).getLista_solicitudes().get(cont)).getEmisor();
+                                        sol += "Posicion de solicitud= " + lista_general.get(pos).getLista_solicitudes().indexOf(s) + "\n" + "Posicion en la lista general= " + n + "--" + lista_general.get(n).getNombre() + "\n";
+                                        cont++;
                                     }
-                                    JOptionPane.showMessageDialog(null, "Mis amigos \n"+sol);
+                                    JOptionPane.showMessageDialog(null, "Mis amigos \n" + sol);
                                     ///No son nuevos objetos son de la lista general solo estan validados para agregar
-                                     //en la lista de solicitudes y amigos asi que pone los numero que aparecen ahi
-                                     
+                                    //en la lista de solicitudes y amigos asi que pone los numero que aparecen ahi
+
+                                    int solicitud = Integer.parseInt(JOptionPane.showInputDialog("posicion Solicitud"));
                                     int atender = Integer.parseInt(JOptionPane.showInputDialog("Contestar posicion en la lista general"));
-                                    int solicitud=Integer.parseInt(JOptionPane.showInputDialog("posicion Solicitud"));
                                     String aceptar = JOptionPane.showInputDialog("Que desea hacer? \n"
                                             + "1-Aceptar \n"
                                             + "2-Rechazar \n");
@@ -140,7 +139,7 @@ public class Lab2_garcia_franklin {
                                         lista_general.get(pos).getLista_amigos().add(atender);
                                         lista_general.get(atender).getLista_amigos().add(pos);
                                         lista_general.get(pos).getLista_solicitudes().remove(solicitud);
-                                        JOptionPane.showMessageDialog(null,"!Hecho¡");
+                                        JOptionPane.showMessageDialog(null, "!Hecho¡");
                                     } else if (aceptar.equals("2")) {
                                         lista_general.get(pos).getLista_solicitudes().remove(solicitud);
                                         JOptionPane.showMessageDialog(null, "!Hecho¡");
@@ -149,43 +148,67 @@ public class Lab2_garcia_franklin {
                                 break;
                                 case "3": {//enviar mensajes
                                     String en = "";
-                                    int con=0;
+                                    int con = 0;
                                     for (Object s : lista_general.get(pos).getLista_amigos()) {
-                                        int n=lista_general.get(pos).getLista_amigos().get(con); 
-                                        en+=n+"--"+lista_general.get(n).getNombre()+"\n";
+                                        int n = lista_general.get(pos).getLista_amigos().get(con);
+                                        en += n + "--" + lista_general.get(n).getNombre() + "\n";
                                         con++;
                                     }
                                     JOptionPane.showMessageDialog(null, en);
                                     int p = Integer.parseInt(JOptionPane.showInputDialog("Posicion de envio"));
-                                    Usuario emisor = new Usuario(lista_general.get(pos).getNombre(),
-                                            lista_general.get(pos).getEdad(),
-                                            lista_general.get(pos).getLugar_nacimiento(),
-                                            lista_general.get(pos).getUsername(),
-                                            lista_general.get(pos).getPassword());
-                                    Usuario receptor = new Usuario(lista_general.get(p).getNombre(),
-                                            lista_general.get(p).getEdad(),
-                                            lista_general.get(p).getLugar_nacimiento(),
-                                            lista_general.get(p).getUsername(),
-                                            lista_general.get(p).getPassword());
+
                                     Date fecha = new Date();
                                     DateFormat df = new SimpleDateFormat("DD/MM/YYYY");
                                     String t = df.format(fecha);
                                     String mensaje = JOptionPane.showInputDialog("Mensaje a enviar");
-                                    lista_general.get(pos).getLista_mensajes_enviados().add(new Mensaje(pos,p,t,mensaje));
-                                    lista_general.get(p).getBuzón_entrada().add(new Mensaje(pos,p,t,mensaje));
+                                    lista_general.get(pos).getLista_mensajes_enviados().add(new Mensaje(pos, p, t, mensaje));
+                                    lista_general.get(p).getBuzón_entrada().add(new Mensaje(pos, p, t, mensaje));
                                     JOptionPane.showMessageDialog(null, "Enviado");
                                 }
                                 break;
                                 case "4": {//buzon
+                                    String o = JOptionPane.showInputDialog("Menu buzon \n"
+                                            + "1-Todos \n"
+                                            + "2-Filtrados fecha \n"
+                                            + "3-Filtrados año \n");
+                                    if (o.equals("1")) {
+                                        String mensajes = "";
+                                        for (Mensaje u : lista_general.get(pos).getBuzón_entrada()) {
+                                            mensajes +=lista_general.get(u.getEmisor()).getNombre()
+                                                    +" "+ u;
+                                        } 
+                                        JOptionPane.showMessageDialog(null, mensajes);
+                                    } else if (o.equals("2")) {
 
+                                    } else if (o.equals("3")) {
+
+                                    }
                                 }
                                 break;
                                 case "5": {//eliminar mensajes
-
+                                    String mensajes = "";
+                                    for (Mensaje u : lista_general.get(pos).getBuzón_entrada()) {
+                                        mensajes += "\n" + lista_general.get(pos).getBuzón_entrada().indexOf(u) + " "
+                                                + u;
+                                    }
+                                    JOptionPane.showMessageDialog(null, mensajes);
+                                    int posicionn = Integer.parseInt(JOptionPane.showInputDialog("Mensaje a eliminar"));
+                                    lista_general.get(pos).getBuzón_entrada().remove(posicionn);
+                                    JOptionPane.showMessageDialog(null, "Eliminado");
                                 }
                                 break;
                                 case "6": {//Eliminar amigos
-
+                                    String en = "";
+                                    int con = 0;
+                                    for (Object s : lista_general.get(pos).getLista_amigos()) {
+                                        int n = lista_general.get(pos).getLista_amigos().get(con);
+                                        en += lista_general.get(pos).getLista_amigos().indexOf(s) + "--" + lista_general.get(n).getNombre() + "\n";
+                                        con++;
+                                    }
+                                    JOptionPane.showMessageDialog(null, en);
+                                    int eliminar = Integer.parseInt(JOptionPane.showInputDialog("Posicion a eliminar"));
+                                    lista_general.get(pos).getLista_amigos().remove(eliminar);
+                                    JOptionPane.showMessageDialog(null, "Eliminado");
                                 }
                                 break;
                             }
